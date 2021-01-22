@@ -2,6 +2,15 @@
 
 ## COMPILE ##
 
+1. Matlab -- Extract Desired scenes
+ A. Download a google earth project as a kml file with named markers at the
+    center of each scene
+
 ## DEPENDENCIES ##
+
+ - Google Earth Project / KML file
+   - Must contain only individual points that are named according to the indicated
+     scene
+   - 
 
 ## INTERMEDIATE FILES  ##
