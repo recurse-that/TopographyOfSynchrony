@@ -1,16 +1,51 @@
-## INTRO ##
+# Topography Of Synchrony
+Zai Erb, University Of Kansas
+Daniel Reuman, University of Kansas
 
-## COMPILE ##
+This repository provides tools to analyze the effects of unique topographical
+features on the synchrony of vegetation
 
-1. Matlab -- Extract Desired scenes
- A. Download a google earth project as a kml file with named markers at the
+## Explanations
+Matlab code is responsible for generating scene files to be exported for statistical analyses in R
+
+## COMPILE
+MATLAB
+1. Setup Directories
+  - In the parent directory
+    - Make directory "Data"
+    - Download MODIS Data in Data (LINK)
+      - ancillary_mat
+      - ancillary_tif
+      - mxvi_mat
+    - Confirm Working tree
+  - Download your google earth project as a kml file with named markers at the
     center of each scene
 
-## DEPENDENCIES ##
+
+2. Matlab -- Extract Desired scenes
+  - Execute run_mat.mlx from root directory in the matlab editor
+    - See DEPENDENCIES for matlab
+  - To create figures or export map images run .mlx files prepended with 'export'
+
+3.
+## DEPENDENCIES
 
  - Google Earth Project / KML file
    - Must contain only individual points that are named according to the indicated
      scene
-   - 
+   -
+ - Matlab
+  - Mapping toolbox and Antenna toolbox must be installed
+  - Run 'Code/Matlab/Dependencies.mlx' to enable addons and toolboxes
 
-## INTERMEDIATE FILES  ##
+
+## MORE DEPENDENCIES
+
+- Must have matlab license
+
+## INTERMEDIATE FILES
+
+
+## PAPER  ##
+- Extracting 2D maps for scenes
+  - In matlab command window from the 'Code/Matlab/' folder call the following

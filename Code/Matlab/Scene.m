@@ -247,7 +247,6 @@ classdef Scene < handle
       
       zmat = get_elev_mat(m_scene);
       
-     
       % Surface Plot
       nexttile;
       surf(zmat, 'EdgeColor', 'none', 'FaceColor', 'interp');
@@ -412,7 +411,7 @@ classdef Scene < handle
     end
     function tiled_fig = export_figs(m_scene)
         
-        dir = append("run/figs3/", m_scene.name);
+        dir = append("Data/2D_maps/", m_scene.name);
         % mkdir(dir);
         exts = ["/avg_mxvi.png", "/pearson.png", "/spearman.png", "/elev.png",...
                 "/tiled.pdf"];
@@ -461,7 +460,8 @@ classdef Scene < handle
         cropped_tiles = crops;
         export_fig(cropped_tiles, append("run/figs/", m_scene_name, fname), '-pdf');
     end
-    % Getters % 
+    
+    % Getters %
     function mxvi_mat = get_mxvi_mat(m_scene)
       %get_mxvi_mat returns mxvi_mats for all years
       b = m_scene.buf;
