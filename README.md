@@ -10,11 +10,42 @@ features on the synchrony of vegetation
 Matlab code is responsible for generating scene files to be exported for statistical analyses in R
 R Code performs modified ttest that account for spatial auto correlation 
 
+
+
+## Compile
+### MATLAB
+- Navigate to Code/Matlab and run exec.mlx
+- You will be prompted to specify desired height, width, and radius of calculation for your scenes
+#### NOTE: I reccomend you start with dimensions such as 50, 50, with a radius of ~5 and scale up from there depending on how powerful your machine is
+### R 
+- After compiling your matlab code 
+
+
+
+
+## Dependencies
+### Core dependencies 
+Matlab License, Matlab R2020b, R, and latex
+
+### Matlab Toolbox dependencies
+Mapping Toolbox and Antennae Toolbox are required to run matlab code
+
+### MODIS Dataset is required to compile matlab code
+{r} [MODIS Dataset] (https://kars.ku.edu/media/downloads/Kastens/reuman/)
+
+### Data requirements to view your own unique scenes
+A sample "Simple Topographical Features.kml" file is provided in the data folder with the scenes I chose to focus on. If you want to look at your own unique scenes, you'll need to create a google earth project on the web then add markers to your project where you want the center of each of your scenes to be (name the points appropriately). Once you have a completed google earth project export it as a kml to the Data directory and replace the file "Simple Topographical Features.kml" with your new kml.
+
+The
+
+## Matlab 
+### 
+
 ## Files
 ### +---Code
 #### |   +---Matlab
 ##### |   |       DATA.m
-###### @PRE: Called as a class object with data from MODIS .mat files as arguments
+###### ||| @PRE: Called as a class object with data from MODIS .mat files as arguments
 ###### @PARAMS: Provided by MODIS datasets, a google earth kml file, and a user inputted radius
 ###### @RUN: Calls scene constructor and defines values of each scene
 ###### @POST: All scene data, figures, and input are saved to proper folders
@@ -34,8 +65,18 @@ R Code performs modified ttest that account for spatial auto correlation
 ##### |           run.R
 ##### |           scatter_plotter.R
 
-## Compile
-MATLAB
+### Data
+MODIS Satellite data set must be used for code to run smoothly. If using another
+similar dataset some code will need to be modified.
+
+### Google Earth KML File
+Must contain only individual points that are named according to the indicated
+scene
+
+### Matlab
+- Mapping toolbox and Antenna toolbox must be installed
+- Run 'Code/Matlab/Dependencies.mlx' to enable addons and toolboxes
+#### COMPILE 
 1. Setup Directories
   - In the parent directory
     - Make directory "Data"
@@ -54,22 +95,6 @@ MATLAB
   - To create figures or export map images run .mlx files prepended with 'export'
 
 3. R -- Analyze Results of synchrony calculations
-
-
-## Dependencies
-
-### Data
-MODIS Satellite data set must be used for code to run smoothly. If using another
-similar dataset some code will need to be modified.
-
-### Google Earth KML File
-Must contain only individual points that are named according to the indicated
-scene
-
-### Matlab
-- Mapping toolbox and Antenna toolbox must be installed
-- Run 'Code/Matlab/Dependencies.mlx' to enable addons and toolboxes
-
 
 ## MORE DEPENDENCIES
 
