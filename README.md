@@ -8,8 +8,21 @@ features on the synchrony of vegetation
 
 ## Explanations
 Matlab code is responsible for generating scene files to be exported for statistical analyses in R
+R Code performs modified ttest that account for spatial auto correlation 
 
-## COMPILE
+## Files
+### +---Code
+#### |   +---Matlab
+##### |   |       DATA.m
+PRE: Called as a class object with data from MODIS .mat files as arguments
+PARAMS: Provided by MODIS datasets, a google earth kml file, and a user inputted radius
+RUN: Calls scene constructor and defines values of each scene
+POST: All scene data, figures, and input are saved to proper folders
+#### |   \---R
+##### |           run.R
+##### |           scatter_plotter.R
+
+## Compile
 MATLAB
 1. Setup Directories
   - In the parent directory
@@ -31,7 +44,7 @@ MATLAB
 3. R -- Analyze Results of synchrony calculations
 
 
-## DEPENDENCIES
+## Dependencies
 
 ### Data
 MODIS Satellite data set must be used for code to run smoothly. If using another
