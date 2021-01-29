@@ -14,10 +14,22 @@ R Code performs modified ttest that account for spatial auto correlation
 ### +---Code
 #### |   +---Matlab
 ##### |   |       DATA.m
-PRE: Called as a class object with data from MODIS .mat files as arguments
-PARAMS: Provided by MODIS datasets, a google earth kml file, and a user inputted radius
-RUN: Calls scene constructor and defines values of each scene
-POST: All scene data, figures, and input are saved to proper folders
+###### @PRE: Called as a class object with data from MODIS .mat files as arguments
+###### @PARAMS: Provided by MODIS datasets, a google earth kml file, and a user inputted radius
+###### @RUN: Calls scene constructor and defines values of each scene
+###### @POST: All scene data, figures, and input are saved to proper folders
+
+##### |   |       SCENE.m
+##### |   |       setSceneSizes.m
+###### @RUN: Allows the user to define the desired height, width, and radius (for calculations)
+##### |   |       setSceneValuesFromKML.m
+###### @PRE: KML file downloaded from google earth project must be in the Data directory (see dependencies)
+###### @RUN: Defines names and latlon coordinates to be passesd to the scene class constructor
+##### |   |       readData.m
+###### @RUN: Defines yearly MXVI values and loads ancillary mat data 
+
+
+
 #### |   \---R
 ##### |           run.R
 ##### |           scatter_plotter.R
