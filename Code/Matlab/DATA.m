@@ -2,16 +2,21 @@ classdef DATA < handle
   
   properties (Access = public) 
     year_count
-    rows
-    cols
-    MXVI
-    lats
-    lons
-    watermask
+    rows  % of overall MODIS Data
+    cols  % ||
+    MXVI  % all MODIS values
+    lats  % ||
+    lons  % ||
+    watermask % ||
     
-    scenes
+    path  % path to base project directory
+    code_path % path to matlab code directory
+    data_path  % path to data directory
+    
+    scenes  % scene objects for each scene
+    maps    % map objects for each scene
     scene_count
-  end
+  end  % properties
   
   methods
     function data = DATA(years, r, c, MXVI, lats, lons, watermask)
@@ -21,14 +26,21 @@ classdef DATA < handle
       data.MXVI = MXVI;
       data.lats = lats;
       data.lons = lons; 
-      data.scenes = tempScene.empty; 
+      data.scenes = SCENE.empty; 
       data.watermask = watermask;
+      data.maps = MAP.empty;
     end  % Constructor
+    
+    function setPaths(data, project_path, path_to_code, path_to_data)
+      data.path = project_path;
+      data.code_path = path_to_code;
+      data.data_path = path_to_data;
+    end  % setPaths
     
     function initScenes(data, names, dims, latlon, radius)
       data.scene_count = length(names);
       for i = 1:data.scene_count
-        data.scenes(i) = tempScene(names(i), dims{i},...
+        data.scenes(i) = SCENE(names(i), dims{i},...
                                    latlon{i}, radius,...
                                    data.year_count, data.cols);
         % Initialize the focal pixels of each scene
@@ -38,8 +50,14 @@ classdef DATA < handle
     end  % initScenes
     
     function setScenes(data)
-      i = 1;
-      % for i = 1:data.scene_count
+    %setScenes defines all properties of all scenes
+    % defines focal PXID matrix
+    % defines LatLon matrix
+    % defines elevation and elevation std matrices
+    % defines MXVI and MXVI std matrices
+    % defines Pearson and Spearman matrices
+    % normalizes all the matrices to the same size
+      for i = 1:1
         % Define the PXIDs of each scene
         setPXID(data.scenes(i), data.cols, data.watermask);
         % Define the lat and lon mats for each scene
@@ -50,10 +68,17 @@ classdef DATA < handle
         setMXVI(data.scenes(i), data.MXVI, data.year_count);
         % Calculate the synchrony
         setSynchrony(data.scenes(i));
-        % Define the elevations of the the scene
-      % end  % outer for 
+        % Normalize the scene to equal dimensions
+        normalizeMatrices(data.scenes(i));
+        % Initialize map class for scene
+        % data.maps(i) = MAP(data.scenes(i), data.data_path, data.code_path);
+        % Export the 2D maps for each scene
+        % export_2D_maps(data.maps(i));
+        % Save the 3D figures for each scene
+        % export_3D_figs(data.maps(i));
+      end  % outer for 
     end  % setScenes
-    
+        
     function pxid = getPXID(row, col)
       pxid = ((row - 1) * c) + col;
     end  % end getPXID
