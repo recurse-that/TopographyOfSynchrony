@@ -7,7 +7,7 @@ This repository provides tools to analyze the effects of unique topographical
 features on the synchrony of vegetation
 
 ## Explanations
-Matlab code is responsible for generating scene files to be exported for statistical analyses in R
+Matlab code reads your kml file and uses the MODIS satellite dataset to construct and analyze the effect of topography--anywhere in the United States--on annual max vegetation and how synchronous vegetation is to the surrounding area. Matlab also generates maps showing Elevation, Standard Deviation of Elevation (compared with the surrounding area), MXVI (annual maximum vegetation), standard deviation of MXVI (compared to all years with available data), and most importantly: Pearson and Spearman correlation of pixels with their surrounding pixels. 2D maps are exported as images, 3D maps are saved and can be interacted with within the matlab figure window. And finally the relevant values found / calculated are exported as csv files to be imported into R.
 R Code performs modified ttest that account for spatial auto correlation
 
 
