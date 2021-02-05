@@ -1,15 +1,15 @@
-classdef tempScene < handle
+classdef SCENE < handle
     %Scene Constructs scene object
     %   All info and data for a given scene
     
   properties (Access = public)
       % PARAMS
-      name
-      height
-      width
-      focal_lat
-      focal_lon
-      radius
+      name  % name of scene
+      height  % user chosen height
+      width  % user chosen width
+      focal_lat  % latitude of focal pixel
+      focal_lon  % longitude of focal pixel
+      radius  % radius to perform synchrony calculations
       year_count
       
       % Variables
@@ -17,23 +17,21 @@ classdef tempScene < handle
       
       % Matrices
 
-      lat_mat
-      lon_mat
-      watermask
-      pxid_mat  % contains pxids 
-      mxvi_mat  % contains mxvis at pxids
-      mxvi_avg  % contains the average max ndvi over time span
+      lat_mat  % all lats in scene
+      lon_mat  % ||
+      watermask % ||
+      pxid_mat  % all scene pxids 
+      mxvi_mat  % all scene mxvis at pxids
+      mxvi_avg  % all of scene's average max ndvi over time span
       mxvi_sd % standard deviation at given pixel over time frame
-      elev_mat % elevations
+      elev_mat % elevation of the scene
       elev_sd % standard deviation of elevations
       pearson_mat  % pearson correlations
       spearman_mat % spearman correlations
-
-      
-  end
+  end  % properties
   
   methods
-    function s = tempScene(name, dims, latlon, rad, years, cols)
+    function s = SCENE(name, dims, latlon, rad, years, cols)
         %Scene class constructor
         %   Initializes all class member variables
         s.name = name;
@@ -43,8 +41,8 @@ classdef tempScene < handle
         s.focal_lon = latlon(2);
         s.radius = rad;
         s.year_count = years;
-        
     end  % Constructor
+    
     
     function setFocalPixels(s, lat_vector, lon_vector, r, c)
       s.focal_pxid = get_pxid([s.focal_lat, s.focal_lon],... 
@@ -87,6 +85,7 @@ classdef tempScene < handle
     
     function setElev(s)
       %setElev sets matrices containing the elevations of each pixel
+      
       for i = 1:s.height
         for j = 1:s.width
           lat = s.lat_mat(i,j);
@@ -139,96 +138,6 @@ classdef tempScene < handle
     end  % setSynchrony
     
     
-    function fig_3D = tiled3DLayout(s, dataPath) 
-      %tiled3DLayout returns a figure with 3D matlab plots for the scene
-      % The z axis of all maps represents elevation while MXVI, MXVI std,
-      % Pearson and Spearman represent the xy axes of the maps and are
-      % visually represented by the color overlay
-      
-      % initialize a tiled layout and add the scene name as the title
-      fig_3D = tiledlayout(3,2)
-      title(fig_3D, s.name);
-      % elevation is always the z value
-      zmat = s.elev_mat;
-      % Surface Plot of elevation
-      nexttile;
-      surf(zmat, 'EdgeColor', 'none', 'FaceColor', 'interp');
-      title('Elevation');
-      % Standard Deviation of Elevation
-      nexttile; 
-      mesh(zmat, flipud(s.elev_sd), 'FaceColor', 'interp');
-      title('Elevation');
-      subtitle('Standard Deviation');
-      % MXVI Plot
-      nexttile;
-      mesh(zmat, flipud(s.mxvi_avg), 'FaceColor', 'interp');
-      title('Avg. MXVI');
-      % Standard Deviation of MXVI 
-      nexttile;
-      mesh(zmat, flipud(s.mxvi_sd), 'FaceColor', 'interp');
-      title('MXVI');
-      subtitle('St. Dev Over Time');
-      % Pearson
-      nexttile;
-      mesh(zmat, flipud(s.pearson_mat), 'FaceColor', 'interp');
-      title('Pearson. Map')
-      % Spearman Plot
-      nexttile;
-      mesh(zmat, flipud(s.spearman_mat), 'FaceColor', 'interp');
-      title('Spearman Map');
-      
-      km_h = s.height / 4;
-      km_w = s.width / 4;
-      str_dimensions = append(' ', num2str(km_h), ' km x ',...
-                              num2str(km_w), ' km');
-      cd(dataPath);
-      saveDir = 'Scene_3D_Figures';
-      if not ( isfolder(saveDir) )
-        mkdir(saveDir);
-      end
-      cd(saveDir);
-      f_name = append(s.name, str_dimensions, '.fig');
-      savefig(f_name);
-    end  % tiled3DLayout
-    
-    function circleCalculations(s, focx, focy, rad)
-      %circleCalculations calculates Spearman, Pearson, and elev std values
-      % All of the calculations that compare focal pixels with nearby
-      % pixels are calculated together here to avoid redundancy
-      
-      % initialize vector to hold elevs within radius of focal pixel
-      elevs = double.empty;
-      % initialize vector to hold correlations found from time series
-      pearson_corrs = double.empty;
-      spearman_corrs = double.empty;
-      % count is what indexes each new value in the vectors
-      count = 0;
-      % define focal time series
-      ts1 = squeeze(s.mxvi_mat(:, focx, focy));
-      % runs for all points in bounding box of circle of radius r
-      for curx = focx - rad : focx + rad
-        for cury = focy - rad : focy + rad
-          if sqrt((curx - focx)^2 + (cury - focy)^2) <= rad
-            if (curx ~= focx && cury ~= focy)
-              % Ignore correlation with itself
-              % m.mxvi_mat(curx, cury) = nan;
-              count = count + 1;
-              % define elevation at point for std calculation
-              elevs(count) = s.elev_mat(curx, cury);
-              % define time series to compare
-              ts2 = squeeze(s.mxvi_mat(:, curx, cury));
-              pearson_corrs(count) = corr(ts1, ts2, 'Type', 'Pearson');
-              spearman_corrs(count) = corr(ts1, ts2, 'Type', 'Spearman');
-            end % inner ir
-          end % outer if
-        end % inner for
-      end % outer for
-      s.elev_sd(focx - rad, focy - rad) = std(elevs);
-      s.pearson_mat(focx - rad, focy - rad) = mean(pearson_corrs, 'omitnan');
-      s.spearman_mat(focx - rad, focy - rad) = mean(spearman_corrs, 'omitnan');
-  
-    end  % circleCalculations
-    
     function normalizeMatrices(s)
       %normalizeMatrices trims all the matrices to the same size
       % Since Pearson and Spearman values are calculated using surrounding
@@ -245,15 +154,49 @@ classdef tempScene < handle
       s.mxvi_sd = s.mxvi_sd( start:rend, start:cend );
       s.mxvi_avg = s.mxvi_avg( start:rend, start:cend );
       s.elev_mat = s.elev_mat( start:rend, start:cend );
-
     end  % normalizeMatrices
     
-    
   end  % methods
-  
-  
-% HELPER FUNCTIONS
+
 end  % classdef
+
+  function circleCalculations(s, focx, focy, rad)
+    %circleCalculations calculates Spearman, Pearson, and elev std values
+    % All of the calculations that compare focal pixels with nearby
+    % pixels are calculated together here to avoid redundancy
+
+    % initialize vector to hold elevs within radius of focal pixel
+    elevs = double.empty;
+    % initialize vector to hold correlations found from time series
+    pearson_corrs = double.empty;
+    spearman_corrs = double.empty;
+    % count is what indexes each new value in the vectors
+    count = 0;
+    % define focal time series
+    ts1 = squeeze(s.mxvi_mat(:, focx, focy));
+    % runs for all points in bounding box of circle of radius r
+    for curx = focx - rad : focx + rad
+      for cury = focy - rad : focy + rad
+        if sqrt((curx - focx)^2 + (cury - focy)^2) <= rad
+          if (curx ~= focx && cury ~= focy)
+            % Ignore correlation with itself
+            % m.mxvi_mat(curx, cury) = nan;
+            count = count + 1;
+            % define elevation at point for std calculation
+            elevs(count) = s.elev_mat(curx, cury);
+            % define time series to compare
+            ts2 = squeeze(s.mxvi_mat(:, curx, cury));
+            pearson_corrs(count) = corr(ts1, ts2, 'Type', 'Pearson');
+            spearman_corrs(count) = corr(ts1, ts2, 'Type', 'Spearman');
+          end % inner ir
+        end % outer if
+      end % inner for
+    end % outer for
+    s.elev_sd(focx - rad, focy - rad) = std(elevs);
+    s.pearson_mat(focx - rad, focy - rad) = mean(pearson_corrs, 'omitnan');
+    s.spearman_mat(focx - rad, focy - rad) = mean(spearman_corrs, 'omitnan');
+
+  end  % circleCalculations
 
   function px_ts = getTimeSeries(s, pxid, year_count, mxvis)
       px_ts = double.empty;
@@ -265,11 +208,11 @@ end  % classdef
   end  % end getTimeSeries
   
   function closest_pxid = get_pxid(latlon, lat_vector, lon_vector, r, c)
-
+    
     closest_diff = zeros(1,2);
     at_index1 = [lat_vector(1), lon_vector(1)];
     closest_diff(1,1) = get_gcd(latlon, at_index1);
-
+    % initialize closest pxid value
     closest_pxid = 1; 
     for i = 1:r*c
         cur_latlon = [lat_vector(i), lon_vector(i)];
@@ -294,4 +237,6 @@ end  % classdef
     
     gcdist = multiplier * gcdist;
   end  % get_gcd
+  
+  
   
