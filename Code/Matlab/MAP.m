@@ -56,7 +56,7 @@ classdef MAP < handle
       set(gca,'color', 'white', 'XTick', [], 'YTick', [])
 
       % Add title, labels, colorbar, and colormap
-      title( "Elevation Map" );
+      title( "Elevation" );
       colormap(parula(256));
       colorbar;
       cur_height = num2str( round( (m.scene.height - (m.scene.radius*2))/4) );
@@ -79,7 +79,7 @@ classdef MAP < handle
       set(gca,'color', 'white', 'XTick', [], 'YTick', [])
 
       % Add title, labels, colorbar, and colormap
-      title( "Elevation std" );
+      title( "Elevation SD" );
       colormap(parula(256));
       colorbar;
       cur_height = num2str(round((m.scene.height - (m.scene.radius*2))/4));
@@ -90,11 +90,7 @@ classdef MAP < handle
     function avg_mxvi_fig(m)
       %avg_mxvi_fig returns a 2D Average MXVI map
       
-      temp1 = m.scene.mxvi_avg;
-      % Replace outliers by modifying means
-      temp = filloutliers(temp1, 'nearest', 'mean');
-      % Rescale values to range from 0 to 1 
-      temp = rescale(temp);
+      temp = m.scene.mxvi_avg;
       
       % Create image for temp
       h = imagesc(temp);
@@ -124,7 +120,7 @@ classdef MAP < handle
       set(gca,'color', 'white', 'XTick', [], 'YTick', [])
 
       % Add title, labels, colorbar, and colormap
-      title( "MXVI std (temporal)" );
+      title( "MXVI SD (temporal)" );
       colormap(parula(256));
       colorbar;
       cur_height = num2str( round( (m.scene.height - (m.scene.radius*2))/4) );
@@ -135,11 +131,7 @@ classdef MAP < handle
     function pearson_fig(m)
       %pearson_fig returns mxvi colormap for selected scene @ selected year
       
-      temp1 = m.scene.pearson_mat;
-      % Replace outliers by modifying means
-      temp = filloutliers(temp1, 'nearest', 'mean');
-      % Rescale values to range from 0 to 1 
-      temp = rescale(temp);
+      temp = m.scene.pearson_mat;
       
       % Create image for temp
       h = imagesc(temp);
@@ -149,7 +141,7 @@ classdef MAP < handle
       set(gca,'color', 'white', 'XTick', [], 'YTick', [])
       
       % Add title, labels, colorbar, and colormap
-      title( "Pearson Map" )
+      title( "Synchrony (Pearson)" )
       colorbar
       colormap(parula(256))
       cur_height = num2str( round( (m.scene.height - (m.scene.radius*2))/4) );
@@ -159,13 +151,8 @@ classdef MAP < handle
     end  % pearson_fig
     function spearman_fig(m)
       %spearman_fig returns mxvi colormap for selected scene @ selected year
-      % spearman_fig = figure(6); 
       
-      temp1 = m.scene.spearman_mat;
-      % Replace outliers by modifying means
-      temp = filloutliers(temp1, 'nearest', 'mean');
-      % Rescale values to range from 0 to 1 
-      temp = rescale(temp);
+      temp = m.scene.spearman_mat;
       
       % Create image for temp
       h = imagesc(temp);
@@ -175,7 +162,7 @@ classdef MAP < handle
       set(gca,'color', 'white', 'XTick', [], 'YTick', [])
       
       % Add title, labels, colorbar, and colormap
-      title( "Spearman Map" )
+      title( "Synchrony (Spearman)" )
       colorbar
       colormap(parula(256))
       cur_height = num2str( round( (m.scene.height - (m.scene.radius*2))/4) );
@@ -190,21 +177,27 @@ classdef MAP < handle
       % This allows figures to be generated within a for loop
       if i == 1
         m.elev_map = figure(i);
+        % set(m.elev_map,'DataAspectRatio', [1 1 1]);
         elev_fig(m);
       elseif i == 2
         m.elev_sd_map = figure(i);
+        % set(gca,'DataAspectRatio', [1 1 1]);
         elev_sd_fig(m);
       elseif i == 3
         m.avg_mxvi_map = figure(i);
+        % set(gca,'DataAspectRatio', [1 1 1]);
         avg_mxvi_fig(m);
       elseif i == 4
         m.mxvi_sd_map = figure(i);
+        % set(gca,'DataAspectRatio', [1 1 1]);
         mxvi_sd_fig(m);
       elseif i == 5
         m.pearson_map = figure(i);
+        % set(gca,'DataAspectRatio', [1 1 1]);
         pearson_fig(m);
       else
         m.spearman_map = figure(i);
+        % set(gca,'DataAspectRatio', [1 1 1]);
         spearman_fig(m);
       end  % if else block
     end  % indexer
@@ -232,31 +225,38 @@ classdef MAP < handle
       
       % initialize tiled layout
       cf = figure(1);
+      set(gca, 'DataAspectRatio', [1 1 1]);
       m.tiled_2D_layout = tiledlayout(cf, 3, 2);
       
       % Top left tile (Elevation)
       nexttile(m.tiled_2D_layout);
+      axis square;
       elev_fig(m)
 
       % Top right tile (Elevation SD)
       nexttile(m.tiled_2D_layout);
+      axis square;
       elev_sd_fig(m)
       % Middle left tile (Average MXVI)
       nexttile(m.tiled_2D_layout);
+      axis square;
       avg_mxvi_fig(m)
       % Middle right tile (MXVI SD)
       nexttile(m.tiled_2D_layout);
+      axis square;
       mxvi_sd_fig(m)
       % Bottom left tile (Pearson)
       nexttile(m.tiled_2D_layout);
+      axis square;
       pearson_fig(m)
       % Bottom right tile (Spearman)
       nexttile(m.tiled_2D_layout);
+      axis square;
       spearman_fig(m)
       
       % Export the tiled fig as a jpeg
-      cur_path = append(m.scene_2D_save_path, "/AllMapsTiled.jpg");
-      saveas(cf, cur_path);
+      cur_path = append(m.scene_2D_save_path, "/AllMapsTiled.pdf");
+      print(cur_path, '-dpdf', '-fillpage');
       
     end  % export_tiled_2D_maps
 
