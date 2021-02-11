@@ -1,17 +1,28 @@
 classdef MAP < handle
   
   properties(Access = public)
-    scene
+    scene  % scene the map represents
     data_path
     code_path
     maps2D_save_path
     scene_2D_save_path
     figs3D_save_path 
     
+    elev_map
+    elev_sd_map
+    avg_mxvi_map
+    mxvi_sd_map
+    pearson_map
+    spearman_map
+    
+    tiled_2D_layout
+    tiled_3D_layout
+    
   end  % properties
   
   methods
     function m = MAP(cur_scene, path_to_data, path_to_code)
+      %MAP constructor creates folders for maps to be exported to
       m.scene = cur_scene;
       m.data_path = path_to_data;
       m.code_path = path_to_code;
@@ -31,8 +42,10 @@ classdef MAP < handle
       end  % if
     end  % constructor
     
-    function elev_fig = elev_fig(m)
-      elev_fig = figure(1);
+    function elev_fig(m)
+      %elev_fig returns a 2D elevation map
+      % exports returned figure as a jpeg
+      
       temp = m.scene.elev_mat;
 
       % Create image for temp
@@ -50,9 +63,12 @@ classdef MAP < handle
       xlabel( append(cur_height, "km") );
       cur_width = num2str( round( (m.scene.width - (m.scene.radius*2))/4) );
       ylabel( append(cur_width, "km") );
+      
     end  % elev_fig
-    function elev_sd_fig = elev_sd_fig(m)
-      elev_sd_fig = figure(2);
+    function elev_sd_fig(m)
+      %elev_sd_fig returns a 2D elevation standard deviation map 
+      
+      % elev_sd_fig = figure(2);
       temp = m.scene.elev_sd;
 
       % Create image for temp
@@ -66,13 +82,13 @@ classdef MAP < handle
       title( "Elevation std" );
       colormap(parula(256));
       colorbar;
-      cur_height = num2str( round( (m.scene.height - (m.scene.radius*2))/4) );
+      cur_height = num2str(round((m.scene.height - (m.scene.radius*2))/4));
       xlabel( append(cur_height, "km") );
       cur_width = num2str( round( (m.scene.width - (m.scene.radius*2))/4) );
       ylabel( append(cur_width, "km") );
     end  % elev_sd_fig
-    function avg_mxvi_fig = avg_mxvi_fig(m)
-      avg_mxvi_fig = figure(3);
+    function avg_mxvi_fig(m)
+      %avg_mxvi_fig returns a 2D Average MXVI map
       
       temp1 = m.scene.mxvi_avg;
       % Replace outliers by modifying means
@@ -96,8 +112,8 @@ classdef MAP < handle
       cur_width = num2str( round( (m.scene.width - (m.scene.radius*2))/4) );
       ylabel( append(cur_width, "km") );
     end  % avg_mxvi_fig
-    function mxvi_sd_fig = mxvi_sd_fig(m)
-      mxvi_sd_fig = figure(4);
+    function mxvi_sd_fig(m)
+      %mxvi_sd_fig returns a 2D MXVI standard deviation map
       temp = m.scene.mxvi_sd;
 
       % Create image for temp
@@ -116,9 +132,8 @@ classdef MAP < handle
       cur_width = num2str( round( (m.scene.width - (m.scene.radius*2))/4) );
       ylabel( append(cur_width, "km") );
     end  % mxvi_sd_fig
-    function pearson_fig = pearson_fig(m)
-      % returns mxvi colormap for selected scene @ selected year
-      pearson_fig = figure(5);
+    function pearson_fig(m)
+      %pearson_fig returns mxvi colormap for selected scene @ selected year
       
       temp1 = m.scene.pearson_mat;
       % Replace outliers by modifying means
@@ -141,11 +156,10 @@ classdef MAP < handle
       xlabel( append(cur_height, "km") );
       cur_width = num2str( round( (m.scene.width - (m.scene.radius*2))/4) );
       ylabel( append(cur_width, "km") );
-      
-    end
-    function spearman_fig = spearman_fig(m)
-      % returns mxvi colormap for selected scene @ selected year
-      spearman_fig = figure(6); 
+    end  % pearson_fig
+    function spearman_fig(m)
+      %spearman_fig returns mxvi colormap for selected scene @ selected year
+      % spearman_fig = figure(6); 
       
       temp1 = m.scene.spearman_mat;
       % Replace outliers by modifying means
@@ -168,111 +182,135 @@ classdef MAP < handle
       xlabel( append(cur_height, "km") );
       cur_width = num2str( round( (m.scene.width - (m.scene.radius*2))/4) );
       ylabel( append(cur_width, "km") );
-      
-    end
+
+    end  % spearman_fig
    
-    function tiled_2D_fig = export_2D_maps(m)
+    function indexer(m, i) 
+      %indexer calls one of the above fig constructors depending on param i
+      % This allows figures to be generated within a for loop
+      if i == 1
+        m.elev_map = figure(i);
+        elev_fig(m);
+      elseif i == 2
+        m.elev_sd_map = figure(i);
+        elev_sd_fig(m);
+      elseif i == 3
+        m.avg_mxvi_map = figure(i);
+        avg_mxvi_fig(m);
+      elseif i == 4
+        m.mxvi_sd_map = figure(i);
+        mxvi_sd_fig(m);
+      elseif i == 5
+        m.pearson_map = figure(i);
+        pearson_fig(m);
+      else
+        m.spearman_map = figure(i);
+        spearman_fig(m);
+      end  % if else block
+    end  % indexer
+    function export_individual_2D_maps(m)
+      %export_individual_2D_maps saves each 2D map to its own jpeg file
+      
       clf;
-      exts = ["/Elevation.png", "/Elevation std.png",...
-              "/MXVI Average.png", "/MXVI std.png", ...
-              "/Pearson.png", "/Spearman.png", "/2DMaps.pdf"];
-      dirs = strings( size(exts,1)-1, 1 );
-
-      cur_dir = append(m.scene_2D_save_path, exts(1));
-      dirs(1) = cur_dir;
-      elev = elev_fig(m);
-      export_fig(cur_dir, elev);
-      % print(cur_dir);
-
-      cur_dir = append(m.scene_2D_save_path, exts(2));
-      dirs(2) = cur_dir;
-      elev_sd = elev_sd_fig(m);
-      export_fig(cur_dir, elev_sd);
-      % print(cur_dir, '-png');
+      % Index save path names
+      all_save_paths = ["/ElevationMap.jpg",...
+                        "/ElevationStandardDeviationMap.jpg",...
+                        "/MXVIAverageMap.jpg",...
+                        "/MXVIStandardDeviationMap.jpg",...
+                        "/PearsonMap.jpg",...
+                        "/SpearmanMap.jpg"];
+      for i = 1 : length(all_save_paths)                 
+        cur_path = append( m.scene_2D_save_path, all_save_paths(i) );
+        figure(i);
+        indexer(m, i);
+        saveas(gcf, cur_path);
+      end  % for 
+    end  % export_individual_2D_maps
+    
+    function export_tiled_2D_maps(m)
+      %export_tiled_2D_maps exports all 2D maps together on the same page
       
-      cur_dir = append(m.scene_2D_save_path, exts(3));
-      dirs(3) = cur_dir;
-      mxvi_avg = avg_mxvi_fig(m);
-      export_fig(cur_dir, mxvi_avg);
-      % print(cur_dir, '-png');
+      % initialize tiled layout
+      cf = figure(1);
+      m.tiled_2D_layout = tiledlayout(cf, 3, 2);
       
-      cur_dir = append(m.scene_2D_save_path, exts(4));
-      dirs(4) = cur_dir;
-      mxvi_sd = mxvi_sd_fig(m);
-      export_fig(cur_dir, mxvi_sd);
-      % print(cur_dir, '-png');
+      % Top left tile (Elevation)
+      nexttile(m.tiled_2D_layout);
+      elev_fig(m)
+
+      % Top right tile (Elevation SD)
+      nexttile(m.tiled_2D_layout);
+      elev_sd_fig(m)
+      % Middle left tile (Average MXVI)
+      nexttile(m.tiled_2D_layout);
+      avg_mxvi_fig(m)
+      % Middle right tile (MXVI SD)
+      nexttile(m.tiled_2D_layout);
+      mxvi_sd_fig(m)
+      % Bottom left tile (Pearson)
+      nexttile(m.tiled_2D_layout);
+      pearson_fig(m)
+      % Bottom right tile (Spearman)
+      nexttile(m.tiled_2D_layout);
+      spearman_fig(m)
       
-      cur_dir = append(m.scene_2D_save_path, exts(5));
-      dirs(5) = cur_dir;
-      pearson = pearson_fig(m);
-      export_fig(cur_dir, pearson);
-      % print(cur_dir, '-png');
-
-      cur_dir = append(m.scene_2D_save_path, exts(6));
-      dirs(6) = cur_dir;
-      spearman = spearman_fig(m);
-      export_fig(cur_dir, spearman);
-      % print(cur_dir, '-png');
-
-      cur_dir = append(m.scene_2D_save_path, exts(end));
-      tiled_2D_fig = figure(7);
-      tiles = imtile(dirs, 'Frames', 1:6, 'GridSize', [3,2], 'BorderSize', [5,10], 'BackgroundColor', 'white');
-
-      tiled_im = imshow(tiles);
-      title(m.scene.name);
-      saveas(tiled_im, cur_dir);
+      % Export the tiled fig as a jpeg
+      cur_path = append(m.scene_2D_save_path, "/AllMapsTiled.jpg");
+      saveas(cf, cur_path);
       
-      % print(tiled_fig, cur_dir, '-fillpage')
-     
-    end  % export_2D_maps
-    function tiled_3D_fig = export_3D_figs(m) 
+    end  % export_tiled_2D_maps
+
+    function export_tiled_3D_maps(m) 
+      %export_tiled_3D_maps makes a tiled layout of 3D map figures 
+      % All matrices are plotted against elevation
       clf;
-      tiled_3D_fig = tiledlayout(3,2);
-      title(tiled_3D_fig, m.scene.name);
+      m.tiled_3D_layout = tiledlayout(3,2);
+      title(m.tiled_3D_layout, m.scene.name);
       
       zmat = m.scene.elev_mat;
       
       % Surface Plot
-      nexttile
+      nexttile(m.tiled_3D_layout);
       surf(zmat, 'EdgeColor', 'none', 'FaceColor', 'interp');
       title('Elevation');
       
       % Standard Deviation of Elevation
-      nexttile
+      nexttile(m.tiled_3D_layout);
       mesh(zmat, flipud(m.scene.elev_sd), 'FaceColor', 'interp');
       title('Elevation');
       subtitle('Standard Deviation');
       
       % MXVI Plot
-      nexttile
+      nexttile(m.tiled_3D_layout);
       mesh(zmat, flipud(m.scene.mxvi_avg), 'FaceColor', 'interp');
       title('Avg. MXVI');
       
       % Standard Deviation of MXVI 
-      nexttile
+      nexttile(m.tiled_3D_layout);
       mesh(zmat, flipud(m.scene.mxvi_sd), 'FaceColor', 'interp');
       title('MXVI');
       subtitle('St. Dev Over Time');
       
       % Pearson
-      nexttile
+      nexttile(m.tiled_3D_layout);
       mesh(zmat, flipud(m.scene.pearson_mat), 'FaceColor', 'interp');
       title('Pearson. Map');
       
       % Spearman Plot
-      nexttile
+      nexttile(m.tiled_3D_layout);
       mesh(zmat, flipud(m.scene.spearman_mat), 'FaceColor', 'interp');
       title('Spearman Map');
       
+      % Specify the figure size in the file name
       l = ( m.scene.height - (m.scene.radius*2) ) / 4;
       w = ( m.scene.width - (m.scene.radius*2) ) / 4;
       
-      m.figs3D_save_path
-      f_name = append(m.figs3D_save_path, '/', m.scene.name,...
+      % Save the figure
+      cur_path = append(m.figs3D_save_path, '/', m.scene.name,...
                       num2str(l),'x', num2str(w));
       
-      savefig(f_name);
-    end  % export_3D_figs
+      savefig(cur_path);
+    end  % export_tiled_3D_maps
       
   end  % methods
 end  % classdef
