@@ -57,7 +57,7 @@ classdef DATA < handle
     % defines MXVI and MXVI std matrices
     % defines Pearson and Spearman matrices
     % normalizes all the matrices to the same size
-      for i = 1:1
+      for i = 1:data.scene_count
         % Define the PXIDs of each scene
         setPXID(data.scenes(i), data.cols, data.watermask);
         % Define the lat and lon mats for each scene
@@ -70,15 +70,18 @@ classdef DATA < handle
         setSynchrony(data.scenes(i));
         % Normalize the scene to equal dimensions
         normalizeMatrices(data.scenes(i));
-        % Initialize map class for scene
-        % data.maps(i) = MAP(data.scenes(i), data.data_path, data.code_path);
-        % Export the 2D maps for each scene
-        % export_2D_maps(data.maps(i));
-        % Save the 3D figures for each scene
-        % export_3D_figs(data.maps(i));
       end  % outer for 
     end  % setScenes
-        
+    
+    function setSceneMaps(data)
+      %setSceneMaps calls setMap for each SCENE object
+      % Generates 2D and 3D map figures and exports important results
+      for i = 1:data.scene_count
+        % Initialize map class for each scene
+        setMap(data.scenes(i), data.data_path, data.code_path);
+      end  % for
+    end  % setSceneMaps
+      
     function pxid = getPXID(row, col)
       pxid = ((row - 1) * c) + col;
     end  % end getPXID
