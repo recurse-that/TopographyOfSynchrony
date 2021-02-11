@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document id="1CIEauCTavvmkm6sYN_jY9thW44unIMo8">
+	<name>Simple Topographical Features</name>
+	<gx:CascadingStyle kml:id="__managed_style_0797FF0636179E65C98A">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/rpc/cc/icon?color=fbc02d&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<gx:displayMode>card</gx:displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0120548438179E65C989">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_120669199F179E65C989</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_0797FF0636179E65C98A</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_120669199F179E65C989">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/rpc/cc/icon?color=fbc02d&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<gx:displayMode>card</gx:displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_2CDB0FB809179E64423C">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/rpc/cc/icon?color=fbc02d&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_1D76BC8FE7179E64423C">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/rpc/cc/icon?color=fbc02d&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0CE0A559D3179E64423C">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_1D76BC8FE7179E64423C</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_2CDB0FB809179E64423C</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark id="04679B633D1638A365AC">
+		<name>Black Canyon of the Gunnison</name>
+		<gx:mid>/m/01wkjw</gx:mid>
+		<gx:fid>0x873f5efc49376af1:0x3f31d692b3ad8bbc</gx:fid>
+		<LookAt>
+			<longitude>-107.73517295</longitude>
+			<latitude>38.5748599</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>18174.37896950308</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0CE0A559D3179E64423C</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>-107.7415961,38.5753936,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="044FDD17A71638A430A8">
+		<name>Gunnison Point</name>
+		<gx:mid>/g/1tfbnt8m</gx:mid>
+		<gx:fid>0x873f5e13ffcb174b:0xb0c3e0365a46e6a7</gx:fid>
+		<LookAt>
+			<longitude>-107.6867249</longitude>
+			<latitude>38.55526365</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>4148.024606012179</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0CE0A559D3179E64423C</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>-107.6867249,38.5552642,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0B419F0B871638A52BAC">
+		<name>Marble Canyon</name>
+		<gx:mid>/m/0ch1q12</gx:mid>
+		<gx:fid>0x87346e958c9f77bb:0xc9d2d894c17b79b9</gx:fid>
+		<LookAt>
+			<longitude>-111.636388</longitude>
+			<latitude>36.81400505</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>1813.625202315651</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0CE0A559D3179E64423C</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>-111.6373384,36.816235,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="07982B7A071638A5D1CD">
+		<name>Teays Valley</name>
+		<gx:mid>/m/010yhk</gx:mid>
+		<gx:fid>0x8848b4306f08e3a7:0xc74c44a6e8362356</gx:fid>
+		<LookAt>
+			<longitude>-81.9198755</longitude>
+			<latitude>38.44580785</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>18206.98195523558</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0CE0A559D3179E64423C</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>-81.9293007,38.4500905,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="05D9B807831638A59C11">
+		<name>Oljato Monument Valley</name>
+		<gx:mid>/m/03h1b3</gx:mid>
+		<gx:fid>0x87372f52a255883f:0x3917265594ee6825</gx:fid>
+		<LookAt>
+			<longitude>-110.23435905</longitude>
+			<latitude>37.0393724</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>18556.272211739</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0CE0A559D3179E64423C</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>-110.1734785,37.00424539999999,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="06E2B460781638A6A2D7">
+		<name>Sentinel Mesa</name>
+		<gx:mid>/g/1vzg2qbl</gx:mid>
+		<gx:fid>0x87373190b73061f5:0x625cab19b06ccfa</gx:fid>
+		<LookAt>
+			<longitude>-110.1056818</longitude>
+			<latitude>37.0063899</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>4262.671635935989</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0CE0A559D3179E64423C</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>-110.1056818,37.0063904,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="09CB9ABD851638A662EB">
+		<name>Grand Mesa</name>
+		<gx:mid>/m/063jwc</gx:mid>
+		<gx:fid>0x8740ce1dc7d6e9f3:0xb66511cd4a815288</gx:fid>
+		<LookAt>
+			<longitude>-107.9367335</longitude>
+			<latitude>39.0666464</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>4109.550562466526</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0CE0A559D3179E64423C</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>-107.9367335,39.06664689999999,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0BB8F588481638A6D8D3">
+		<name>Mt Hood</name>
+		<gx:mid>/m/01913_</gx:mid>
+		<gx:fid>0x54be1c5501719a05:0x831d76c0b7aea9ea</gx:fid>
+		<LookAt>
+			<longitude>-121.6959511</longitude>
+			<latitude>45.37361445</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>3612.972900409424</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0CE0A559D3179E64423C</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>-121.6959511,45.373615,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="022224C47E1638A75FA5">
+		<name>Mt Rainier</name>
+		<gx:mid>/m/01ttcf</gx:mid>
+		<gx:fid>0x5490d193f70860fb:0x5b5e4fe17ad6b707</gx:fid>
+		<LookAt>
+			<longitude>-121.7603229</longitude>
+			<latitude>46.85230694999999</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>3491.534412579769</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0CE0A559D3179E64423C</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>-121.7603229,46.85230749999999,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="09B4047835179E65C988">
+		<name>Mt St Helens</name>
+		<gx:mid>/m/094xz</gx:mid>
+		<gx:fid>0x54969956568a2691:0x69ddb4f4b6cf94c7</gx:fid>
+		<LookAt>
+			<longitude>-122.1955508</longitude>
+			<latitude>46.19140005000001</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>3546.010675594906</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0120548438179E65C989</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>-122.1955508,46.19140059999999,0</coordinates>
+		</Point>
+	</Placemark>
+</Document>
+</kml>
