@@ -70,20 +70,22 @@ classdef DATA < handle
         setSynchrony(data.scenes(i));
         % Normalize the scene to equal dimensions
         normalizeMatrices(data.scenes(i));
+        % Initialize map class for each scene
+        setMap(data.scenes(i), data.data_path, data.code_path);
       end  % outer for 
     end  % setScenes
     
-    function setSceneMaps(data)
+    function exportSceneData(data)
       %setSceneMaps calls setMap for each SCENE object
       % Generates 2D and 3D map figures and exports important results
       for i = 1:data.scene_count
-        % Initialize map class for each scene
-        setMap(data.scenes(i), data.data_path, data.code_path);
+        exportResults(data.scenes(i), data.data_path);
       end  % for
-    end  % setSceneMaps
-      
+    end  % exportSceneData
+     
     function pxid = getPXID(row, col)
       pxid = ((row - 1) * c) + col;
     end  % end getPXID
+    
   end  % methods
 end  % classdef DATA
