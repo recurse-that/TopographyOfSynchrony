@@ -227,6 +227,8 @@ classdef MAP < handle
       cf = figure(1);
       set(gca, 'DataAspectRatio', [1 1 1]);
       m.tiled_2D_layout = tiledlayout(cf, 3, 2);
+      title(m.tiled_2D_layout, m.scene.name);
+      
       
       % Top left tile (Elevation)
       nexttile(m.tiled_2D_layout);
