@@ -26,8 +26,15 @@ R Code performs modified ttests that account for spatial auto correlation
 ### Core dependencies
 Matlab License, Matlab R2020b, R, and latex (tinytex preferred)
 
-### Dependencies on Matlab toolboxes
-Mapping Toolbox and Antennae Toolbox are required to run matlab code
+### Dependencies on Matlab
+#### Dependencies on mathworks license and toolboxes
+#### Valid matlab license
+##### Mapping Toolbox 
+##### Antennae Toolbox
+##### Statistics and machine learning toolbox
+#### Dependencies on add-ons
+##### kml2struct function
+
 
 ### Dependencies on data
 {r} [MODIS Dataset] (https://kars.ku.edu/media/downloads/Kastens/reuman/)
