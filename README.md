@@ -28,12 +28,12 @@ Matlab License, Matlab R2020b, R, and latex (tinytex preferred)
 
 ### Dependencies on Matlab
 #### Dependencies on mathworks license and toolboxes
-#### Valid matlab license
-##### Mapping Toolbox 
-##### Antennae Toolbox
-##### Statistics and machine learning toolbox
+- Valid matlab license
+- Mapping Toolbox 
+- Antennae Toolbox
+- Statistics and machine learning toolbox
 #### Dependencies on add-ons
-##### kml2struct function
+- kml2struct function
 
 
 ### Dependencies on data
