@@ -32,6 +32,7 @@ Matlab License, Matlab R2020b, R, and latex (tinytex preferred)
 - Mapping Toolbox 
 - Antennae Toolbox
 - Statistics and machine learning toolbox
+- Image processing toolbox (to save maps)
 #### Dependencies on add-ons
 - kml2struct function
 
