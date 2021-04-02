@@ -30,7 +30,7 @@
 \title{Place title here}
 \date{}
 
-\author[a]{Jasmin Albert}
+\author[a]{Isaiah Erb}
 \author[a,b]{Daniel C. Reuman}
 
 \affil[a]{Department of Ecology and Evolutionary Biology and Kansas Biological Survey, University of Kansas}
@@ -56,7 +56,7 @@ Place abstract here
 \end{abstract}
 
 %***Add to these
-\keywords{kw1, kw2,kw3}
+\keywords{synchrony, NDVI, kw3}
 
 \section{Introduction}\label{section:introduction}
 
@@ -70,7 +70,7 @@ Place abstract here
 \section{Discussion}\label{section:discussion}
 
 
-\section{Reference code for Jasmin to learn Latex/Sweave}
+\section{Reference code for Zai to be reminded Latex/Sweave}
 
 To get normal text you just type.
 
@@ -114,9 +114,10 @@ You can refer to Table \ref{tab:random_table} in the same way.
 
 %You can also refer to figures and tables and equations from the sup mat, just prefix the labels
 %by SM- in your calls to \ref{}
+To refer to a sup mat figure (or table, whatever) which is labeled in sup mat as, say, smtab, use this: %\ref{SM-smtab}
 
 You can cite like this \cite{Abanetal2006} or this \citep{Abanetal2006} or this \citealp{Abanetal2006}.
-You cal also cite books \citep{BurnhamAnderson2002}, of course.
+You can also cite books \citep{BurnhamAnderson2002}, of course.
 
 \clearpage
 \newpage
@@ -153,10 +154,10 @@ you & can & round & \Sexpr{round(allregres[1,5],3)} \\
 
 \section{Figures}
 
-\begin{figure}[!h]
-\includegraphics[width=.5\textwidth]{figures/summaryDocFigures/figure8.png}
-\caption{Type the caption here.} \label{fig:random_fig}
-\end{figure}
+%\begin{figure}[!h]
+%\includegraphics[width=.5\textwidth]{figures/summaryDocFigures/figure8.png}
+%\caption{Type the caption here.} \label{fig:random_fig}
+%\end{figure}
 
 
 \end{document}
