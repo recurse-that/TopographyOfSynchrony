@@ -81,7 +81,7 @@
 
         % load the lats and lons
         load('modis_qkm_pixel_latlon.mat');
-        load('modis_qkm_water_mask.mat', 'water1_land0');
+        watermask = load('modis_qkm_water_mask_v2.mat', 'water1_land0_v2');
         % add mxvi path 
         addpath("mxvi_mat/.");
         cd("mxvi_mat");
@@ -154,7 +154,7 @@
         % initialize data object
         read.allData = DATA(m_year_count, r, c,...
                           mxvi_vals, modis_qkm_pixel_lat,...
-                          modis_qkm_pixel_lon, water1_land0);
+                          modis_qkm_pixel_lon, watermask);
         % set the paths for the data
         setPaths(read.allData, read.cur_path,...
                  read.code_path, read.data_path);

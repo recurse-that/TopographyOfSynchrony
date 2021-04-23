@@ -171,6 +171,12 @@ classdef MAP < handle
       ylabel( append(cur_width, "km") );
 
     end  % spearman_fig
+    
+    function elev_sd_v_pearson(m)
+        clf;
+        zmat = m.scene.elev_sd;
+        mesh(zmat, m.scene.pearson_mat, 'FaceColor', 'interp');
+    end  % elev_sd_v_pearson
    
     function indexer(m, i) 
       %indexer calls one of the above fig constructors depending on param i
@@ -233,28 +239,28 @@ classdef MAP < handle
       % Top left tile (Elevation)
       nexttile(m.tiled_2D_layout);
       axis square;
-      elev_fig(m)
+      elev_fig(m);
 
       % Top right tile (Elevation SD)
       nexttile(m.tiled_2D_layout);
       axis square;
-      elev_sd_fig(m)
+      elev_sd_fig(m);
       % Middle left tile (Average MXVI)
       nexttile(m.tiled_2D_layout);
       axis square;
-      avg_mxvi_fig(m)
+      avg_mxvi_fig(m);
       % Middle right tile (MXVI SD)
       nexttile(m.tiled_2D_layout);
       axis square;
-      mxvi_sd_fig(m)
+      mxvi_sd_fig(m);
       % Bottom left tile (Pearson)
       nexttile(m.tiled_2D_layout);
       axis square;
-      pearson_fig(m)
+      pearson_fig(m);
       % Bottom right tile (Spearman)
       nexttile(m.tiled_2D_layout);
       axis square;
-      spearman_fig(m)
+      spearman_fig(m);
       
       % Export the tiled fig as a jpeg
       cur_path = append(m.scene_2D_save_path, "/AllMapsTiled.pdf");
