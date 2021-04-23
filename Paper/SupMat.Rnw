@@ -1,0 +1,50 @@
+\documentclass[letterpaper,11pt]{article}
+
+%packages
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[left=2cm,top=2cm,right=2cm,bottom=2cm,head=.5cm,foot=.5cm]{geometry}
+\usepackage{url}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{lineno}
+\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{xr}
+\usepackage{authblk}
+
+%new commands and so on
+
+
+%external documents
+\externaldocument[MT-]{Paper}
+
+%header material for paper
+\title{Drivers of spatial synchrony in giant kelp populations}
+\date{}
+
+%***Tentative author order
+\author{Lawrence W. Sheppard}
+\author{Daniel C. Reuman}
+\author{Tom Bell}
+\author{Jonathan Walter}
+\author{Kyle Cavanaugh}
+\author{Max Castorani}
+
+\begin{document}
+
+%The following is where you load in the numeric results that will be embedded in the text
+<<eval=T,echo=F,message=F,warning=F>>=
+#place R code here for loading in necessary variables from Results
+@
+
+\maketitle
+
+%probably want table of contents, figure and table lists
+
+Place text here
+
+\end{document}
