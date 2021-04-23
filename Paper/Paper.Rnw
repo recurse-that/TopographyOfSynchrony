@@ -25,47 +25,55 @@
 
 %external documents
 \externaldocument[SM-]{SupMat}
- 
+
 %header material for paper
-\title{Place title here}
+\title{Topography Of Synchrony}
 \date{}
 
 \author[a]{Isaiah Erb}
 \author[a,b]{Daniel C. Reuman}
 
 \affil[a]{Department of Ecology and Evolutionary Biology and Kansas Biological Survey, University of Kansas}
-\affil[b]{Laboratory of Populations, Rockefeller University}
+\affil[b]{}
 
 %***Need to indicate corresponding authors
 
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 
 %The following is where you load in the numeric results that will be embedded in the text
 <<eval=T,echo=F,message=F,warning=F>>=
-system(paste("biber", sub("\\.Rnw$", "", current_input())))
+  #system(paste("biber", sub("\\.Rnw$", "", current_input())))
 
 #place R code here for loading in necessary variables from Results
 #ordinarily this would be a readRDS command, but I'm just defining a variable here for now
 allregres<-matrix(rnorm(10),2,5)
 @
-
-\maketitle
+  
+  \maketitle
 
 \begin{abstract}
 Place abstract here
 \end{abstract}
 
 %***Add to these
-\keywords{synchrony, NDVI, kw3}
+\keywords{synchrony, NDVI, vegetation, MODIS, topography}
 
 \section{Introduction}\label{section:introduction}
 
 
 \section{Methods}\label{section:methods}
+\\
+\textit{Annualized Maximum NDVI data (MXVI)} \\
+Vegetation density measurements collected by satellite provided a dataset evenly spaced temporarily over 19 years, and geographically spanning across the continental United States. Synchrony was derived from an annualized maximum version of the Normalized Difference Vegetation Index (NDVI). This vegetation index--produced on 16-day intervals at multiple spatial resolutions--characterizes the global range of vegetation states and processes and is derived from atmospherically corrected reflectance in the red, near-infrared, and blue waveband all obtained from NASA’s Moderate Resolution Imaging Spectroradiometer (MODIS). Annualized maximum NDVI data (MXVI) was modeled then projected to map coordinates. \\ \\
+\textit{Synchrony Maps} \\
+MODIS has a resolution of 250 meters meaning for each year in our dataset there were TODO individual ‘pixels’ each representing 250 square meter plots of land (or water) on the map. Maps of local (2.5-kilometer/10-pixel radius) NDVI synchrony were generated from the annual maximum NDVI time series. Synchrony values for each focal cell were calculated by a two-step process. First, correlation coefficients were calculated between the focal cell time series and the time series of each cell within a 2.5-kilometer circular radius. Then these Pearson correlations were averaged to generate a synchrony value for the focal cell. This process was repeated for each focal cell within the 18348 by 11556 square kilometer grid region over the continental United States. \ref{fig:fig1} demonstrates this process for two focal cells. \\
+\textit{Scene Selection} \\
+The expansive MODIS dataset allowed for a wide berth when choosing geographic scenes to examine. The criteria used to select scenes aimed to find abrupt elevation changes within individual natural land formations. Scenes should be simple i.e. distinct topographical features--such as canyons, mountains, mesas, and plateaus--with minimal noise. The challenge in selecting simple scenes with distinct areas of rapid elevation variation is that oftentimes land features are not simple in the real world.
 
 
 \section{Results}\label{section:results}
-
+As hypothesized originally, a high standard deviation of elevation resulted in low synchrony, whereas a lower standard deviation of elevation has higher potential synchrony. Furthermore, a low standard deviation of elevation translates to higher synchrony for all scenes except mountain scenes and Teays Valley, all of which have an insignificant P-Value for the standard deviation of elevation. These insignificant P-Values do not contradict the hypothesis because areas with greater variation in elevation still exhibit lower synchrony which is the case for all scenes observed. Areas with a low standard deviation of elevation have a higher potential to be more synchronous but in some cases, other significant determinants of synchrony are more prevalent in areas with a low standard deviation of elevation which could result in these areas being less synchronous. This makes standard deviation of elevation a great predictor of asynchrony and a good predictor of synchrony.
 
 \section{Discussion}\label{section:discussion}
 
@@ -86,7 +94,7 @@ Some basic math, inline, by example: $x_{11}$, $y^{22}$, $\frac{1+y}{x+3}$, $\su
 $\alpha$, $\beta$.
 
 There is also display math:
-\begin{equation}
+  \begin{equation}
 x=y+12-z \label{eq_about_x_and_y}
 \end{equation}
 The ``label'' command allows a textual label for refering to equations later.
@@ -107,7 +115,7 @@ You should never manually type any results, they should always be autolinks like
 
 You make a percent with \%
 
-You can refer to Fig. \ref{fig:random_fig} by its label and latex will number figures and use the correct numbers.
+You can refer to Fig. \ref{fig:fig1} by its label and latex will number figures and use the correct numbers.
 The label is defined below where the figure is placed.
 
 You can refer to Table \ref{tab:random_table} in the same way.
@@ -116,8 +124,9 @@ You can refer to Table \ref{tab:random_table} in the same way.
 %by SM- in your calls to \ref{}
 To refer to a sup mat figure (or table, whatever) which is labeled in sup mat as, say, smtab, use this: %\ref{SM-smtab}
 
-You can cite like this \cite{Abanetal2006} or this \citep{Abanetal2006} or this \citealp{Abanetal2006}.
+You can cite like this \cite{Liebhold2004} or this \citep{Walter2017} or this \citealp{Dut1993}.
 You can also cite books \citep{BurnhamAnderson2002}, of course.
+\cite{Heino1997}
 
 \clearpage
 \newpage
@@ -153,11 +162,42 @@ you & can & round & \Sexpr{round(allregres[1,5],3)} \\
 
 
 \section{Figures}
+% Figure 1 helps visualize how synchrony is calculated in the methods section. 
+\begin{figure}[!h]
+\includegraphics[width=.5\textwidth]{figures/fig1-ExampleSynchrony.png}
+\caption{Calculating synchrony for (8, 8) and (16, 16) with radius 5 km – This example figure shows the process that is undertaken to determine what focal cells are inside the circle. First consider all focal cells within a 5km square radius of the center then check to see if those focal cells fall into the circle.} \label{fig:fig1}
+\end{figure}
 
-%\begin{figure}[!h]
-%\includegraphics[width=.5\textwidth]{figures/summaryDocFigures/figure8.png}
-%\caption{Type the caption here.} \label{fig:random_fig}
-%\end{figure}
+% Figure 2 plots illustrating hypothesis
+\begin{figure}[!h]
+\includegraphics[width=.5\textwidth]{figures/fig2-AllTables.PNG}
+\caption{P-Values highlighted green in the table are significant and their corresponding correlation values are red if the correlation is negative and blue if the correlation is positvie} \label{fig:fig2}
+\end{figure}
+
+% Figure 3 maps illustrating hypothesis
+\begin{figure}[!h]
+\includegraphics[width=.5\textwidth]{figures/fig3-MonValScatterPlot.png}
+\caption{Comparing the elevation standard deviation colormap to the Pearson and Spearman maps makes it easy to clearly visualise the relationship between the two} \label{fig:fig3}
+\end{figure}
+
+% Figure 4
+\begin{figure}[!h]
+\includegraphics[width=.5\textwidth]{figures/fig4-MonValMaps.jpeg}
+\caption{Monument Valley exemplifies how significant of a role elevation standard deviation can play in driving synchrony when confounding variables and noise are minimal} \label{fig:fig4}
+\end{figure}
+
+% Figure 5
+\begin{figure}[!h]
+\includegraphics[width=.5\textwidth]{figures/fig5-TeaysScatterPlot.png}
+\caption{Teays is an outlier from the other non-mountain scenes} \label{fig:fig5}
+\end{figure}
+
+% Figure 6
+\begin{figure}[!h]
+\includegraphics[width=.5\textwidth]{figures/fig6-TeaysMaps.jpeg}
+\caption{The Teays Valley maps show that standard deviation of elevation can be overshadowed by a stronger driver of synchrony or asynchrony} \label{fig:fig6}
+\end{figure}
+
 
 
 \end{document}
