@@ -38,17 +38,11 @@
 
 %***Need to indicate corresponding authors
 
+\usepackage{Sweave}
 \begin{document}
-\SweaveOpts{concordance=TRUE}
+\input{Paper-concordance}
 
 %The following is where you load in the numeric results that will be embedded in the text
-<<eval=T,echo=F,message=F,warning=F>>=
-  #system(paste("biber", sub("\\.Rnw$", "", current_input())))
-
-#place R code here for loading in necessary variables from Results
-#ordinarily this would be a readRDS command, but I'm just defining a variable here for now
-allregres<-matrix(rnorm(10),2,5)
-@
   
   \maketitle
 
@@ -107,8 +101,8 @@ out equation numbering and insert the correct number labels for you.
 You can also refer to any section in the same way: section \ref{section:introduction}, section \ref{section:methods}.
 
 You can include the value of previously loaded R variables in the text, e.g., the value of allregres[1,5] is
-\Sexpr{allregres[1,5]}, which can also be given rounded: \Sexpr{round(allregres[1,5],3)}. You can do simple R
-on the fly, e.g., allregres[1,5] plus 1 is \Sexpr{allregres[1,5]+1}. 
+-1.07445103152966, which can also be given rounded: -1.074. You can do simple R
+on the fly, e.g., allregres[1,5] plus 1 is -0.0744510315296631. 
 You should never manually type any results, they should always be autolinks like this.
 
 %Comments are lines starting with %
@@ -150,8 +144,8 @@ Col 1 header & Col 2 header & Col 3 header & Col 4 header \\
 text & or & numbers & 3.2 \\
 or & math & $x+1$ & or \\
 even & the & values & of \\
-loaded & R & variables & \Sexpr{allregres[1,5]} \\
-you & can & round & \Sexpr{round(allregres[1,5],3)} \\ 
+loaded & R & variables & -1.07445103152966 \\
+you & can & round & -1.074 \\ 
 \hline
 \end{tabular}
 \label{tab:random_table}
@@ -160,7 +154,7 @@ you & can & round & \Sexpr{round(allregres[1,5],3)} \\
 \clearpage
 \newpage
 
-<center>
+
 \section{Figures}
 % Figure 1 helps visualize how synchrony is calculated in the methods section. 
 \begin{figure}[!h]
@@ -197,8 +191,6 @@ you & can & round & \Sexpr{round(allregres[1,5],3)} \\
 \includegraphics[width=.5\textwidth]{figures/fig6-TeaysMaps.jpeg}
 \caption{The Teays Valley maps show that standard deviation of elevation can be overshadowed by a stronger driver of synchrony or asynchrony} \label{fig:fig6}
 \end{figure}
-
-<\center>
 
 
 
