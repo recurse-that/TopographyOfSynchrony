@@ -81,13 +81,11 @@ classdef DATA < handle
             
       % Export scene names file for R
       scene_names = string.empty;
-      scene_names_path = append(data.data_path, '/scene_names.txt');
     
       for i = 1:data.scene_count
         scene_names(i) = data.scenes(i).name;
         exportResults(data.scenes(i), data.data_path);
       end  % for
-      csvwrite(scene_names_path, scene_names);
     end  % exportSceneData
      
     function pxid = getPXID(row, col)

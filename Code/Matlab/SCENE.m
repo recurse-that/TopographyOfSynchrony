@@ -203,7 +203,7 @@ classdef SCENE < handle
         end  % inner for
       end  % outer for
       
-      cur_path = append(data_path, "/Scene_CSVs/", s.name);
+      cur_path = append(data_path, "Scene_CSVs/", s.name);
       % Create CSV file for the scene
       writematrix(col_wise_csv, cur_path);
     end  % exportResults

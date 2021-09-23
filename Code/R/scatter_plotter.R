@@ -1,7 +1,7 @@
 # Elevation Scatter Plots
-pdf(file = "G:/Documents/TopographyOfSynchrony/Results/ElevPlots.pdf")
-for (i in 1:10) {
-  df_in <- read.csv(file_names[i])
+pdf(file = paste(results_path, "ElevPlots.pdf"))
+for (i in 1:scene_index) {
+  df_in <- read.csv(file_names_in[i])
   elev = df_in[,3]
   pearson = df_in[,7]
   spearman = df_in[,8]
@@ -12,9 +12,9 @@ for (i in 1:10) {
 dev.off()
 
 # Elevation Standard Deviation Scatter Plots
-pdf(file = "G:/Documents/TopographyOfSynchrony/Results/ESDPlots.pdf")
-for (i in 1:10) {
-  df_in <- read.csv(file_names[i])
+pdf(file = paste(results_path, "ESDPlots.pdf"))
+for (i in 1:scene_index) {
+  df_in <- read.csv(file_names_in[i])
   esd = df_in[,4]
   pearson = df_in[,7]
   spearman = df_in[,8]
@@ -25,9 +25,9 @@ for (i in 1:10) {
 dev.off()
 
 # MXVI Scatter Plots
-pdf(file = "G:/Documents/TopographyOfSynchrony/Results/MXVIPlots.pdf")
-for (i in 1:10) {
-  df_in <- read.csv(file_names[i])
+pdf(file = paste(results_path, "MXVIPlots.pdf"))
+for (i in 1:scene_index) {
+  df_in <- read.csv(file_names_in[i])
   mxvi = df_in[,5]
   pearson = df_in[,7]
   spearman = df_in[,8]
@@ -39,9 +39,9 @@ dev.off()
 
 
 # MXVI Standard Deviation Scatter Plots
-pdf(file = "G:/Documents/TopographyOfSynchrony/Results/MXVISDPlots.pdf")
-for (i in 1:10) {
-  df_in <- read.csv(file_names[i])
+pdf(file = paste(results_path, "MXVISDPlots.pdf"))
+for (i in 1:scene_index) {
+  df_in <- read.csv(file_names_in[i])
   msd = df_in[,6]
   pearson = df_in[,7]
   spearman = df_in[,8]

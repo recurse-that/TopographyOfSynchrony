@@ -45,7 +45,6 @@ classdef MAP < handle
     function elev_fig(m)
       %elev_fig returns a 2D elevation map
       % exports returned figure as a jpeg
-      
       temp = m.scene.elev_mat;
 
       % Create image for temp
@@ -130,7 +129,6 @@ classdef MAP < handle
     end  % mxvi_sd_fig
     function pearson_fig(m)
       %pearson_fig returns mxvi colormap for selected scene @ selected year
-      
       temp = m.scene.pearson_mat;
       
       % Create image for temp
@@ -314,10 +312,12 @@ classdef MAP < handle
       w = ( m.scene.width - (m.scene.radius*2) ) / 4;
       
       % Save the figure
-      cur_path = append(m.figs3D_save_path, '/', m.scene.name,...
-                      num2str(l),'x', num2str(w));
+      cur_path = append(m.figs3D_save_path, '/', m.scene.name, '.fig');
+      mkdir(m.figs3D_save_path);
+      cd(m.figs3D_save_path);
+      saveas(m.tiled_3D_layout, cur_path);
+      cd(m.code_path);
       
-      savefig(cur_path);
     end  % export_tiled_3D_maps
       
     
