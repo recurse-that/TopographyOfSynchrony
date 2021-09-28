@@ -1,0 +1,7 @@
+install.packages("kableExtra", dependencies = TRUE)
+install.packages('knitr', dependencies = TRUE)
+install.packages("magick")
+install.packages("webshot")
+install.packages("SpatialPack")
+webshot::install_phantomjs()
+tinytex::install_tinytex()
