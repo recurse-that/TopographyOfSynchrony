@@ -2,7 +2,7 @@ classdef MAP < handle
   
   properties(Access = public)
     scene  % scene the map represents
-    data_path
+    results_path
     code_path
     maps2D_save_path
     scene_2D_save_path
@@ -21,25 +21,21 @@ classdef MAP < handle
   end  % properties
   
   methods
-    function m = MAP(cur_scene, path_to_data, path_to_code)
+      function m = MAP(cur_scene, path_to_results, path_to_code)
       %MAP constructor creates folders for maps to be exported to
       m.scene = cur_scene;
-      m.data_path = path_to_data;
+      m.results_path = path_to_results;
       m.code_path = path_to_code;
-      m.maps2D_save_path = append(path_to_data, '/Scene_2D_Maps');
+      m.maps2D_save_path = append(path_to_results, m.scene.name, '/Scene_2D_maps');
       if ~exist(m.maps2D_save_path, 'dir')
         mkdir(m.maps2D_save_path);
       end  % if
       
-      m.figs3D_save_path = append(path_to_data, '/Scene_3D_Figures');
-      if ~exist(m.maps2D_save_path, 'dir')
+      m.figs3D_save_path = append(path_to_results, m.scene.name, '/Scene_3D_Figures');
+      if ~exist(m.figs3D_save_path, 'dir')
         mkdir(m.figs3D_save_path);
       end  % if
       
-      m.scene_2D_save_path = append(m.maps2D_save_path, '/', m.scene.name);
-      if ~exist(m.scene_2D_save_path, 'dir')
-        mkdir(m.scene_2D_save_path);
-      end  % if
     end  % constructor
     
     function elev_fig(m)
@@ -217,7 +213,7 @@ classdef MAP < handle
                         "/PearsonMap.jpg",...
                         "/SpearmanMap.jpg"];
       for i = 1 : length(all_save_paths)                 
-        cur_path = append( m.scene_2D_save_path, all_save_paths(i) );
+        cur_path = append( m.maps2D_save_path, all_save_paths(i) );
         figure(i);
         indexer(m, i);
         saveas(gcf, cur_path);
@@ -261,7 +257,7 @@ classdef MAP < handle
       spearman_fig(m);
       
       % Export the tiled fig as a jpeg
-      cur_path = append(m.scene_2D_save_path, "/AllMapsTiled.pdf");
+      cur_path = append(m.maps2D_save_path, "/AllMapsTiled.pdf");
       print(cur_path, '-dpdf', '-fillpage');
       
     end  % export_tiled_2D_maps
