@@ -1,13 +1,10 @@
-install.packages("kableExtra", dependencies = TRUE)
-install.packages("magick")
-install.packages("SpatialPack")
 
 # Set working directory to source file location 
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 # Set working directory to projects root directory 
 cur_wd = dirname( dirname( getwd() ) )
 setwd(cur_wd)
-
+source(paste(cur_wd, 'Code', 'R', 'package_installer.R', sep='/'))
 # index each of the scene names 
 temp_scene_names <- read.csv("Data//scene_names.txt", header = FALSE, sep = ',')
 temp_scene_types <- read.csv("Data//scene_types.txt", header = FALSE, sep = ',')
@@ -151,7 +148,6 @@ for (i in 1:scene_count) {
 
 setwd(cur_wd)
 source(paste(code_path, "scatter_plotter.R", sep="/"))
-scatter_plotter.R
 
 # Compile the supmat 
 library(knitr)

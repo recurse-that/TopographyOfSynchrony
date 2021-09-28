@@ -91,29 +91,61 @@
 
 % Tiled Maps
 % Canyon Scenes
+% Black Canyon of the Gunnison
 \begin{figure}
-  \includegraphics[width=\paperwidth]{{Black Canyon of the Gunnison/Scene_2D_maps/AllMapsTiled.pdf}}\,%
-  \includegraphics[width=\paperwidth]{{Gunnison Point/Scene_2D_maps/AllMapsTiled.pdf}}
-  \includegraphics[width=\paperwidth]{{Marble Canyon/Scene_2D_maps/AllMapsTiled.pdf}}
+  \centering
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Black Canyon of the Gunnison/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+% Gunnison Point
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Gunnison Point/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+% Marble Canyon
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Marble Canyon/Scene_2D_maps/AllMapsTiled.pdf}}
 \end{figure}
 % Valley Scenes
-\begin{figure}[htbp]
-  \includegraphics{{Teays Valley/Scene_2D_maps/AllMapsTiled.pdf}}
-  \includegraphics{{Oljato Monument Valley/Scene_2D_maps/AllMapsTiled.pdf}}
+% Teays Valley
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Teays Valley/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+% Oljato Monument Valley
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Oljato Monument Valley/Scene_2D_maps/AllMapsTiled.pdf}}
 \end{figure}
 % Mesa and Plateau Scenes
-\begin{figure}[htbp]
-  \includegraphics{{Sentinel Mesa/Scene_2D_maps/AllMapsTiled.pdf}}
-  \includegraphics{{Grand Mesa/Scene_2D_maps/AllMapsTiled.pdf}}
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Sentinel Mesa/Scene_2D_maps/AllMapsTiled.pdf}}
 \end{figure}
+% Grand Mesa
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Grand Mesa/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+
 % Mountain Scenes
-\begin{figure}[htbp]
-  \includegraphics{{Mt Hood/Scene_2D_maps/AllMapsTiled.pdf}}
-  \includegraphics{{Mt Rainier/Scene_2D_maps/AllMapsTiled.pdf}}
-  \includegraphics{{Mt St Helens/Scene_2D_maps/AllMapsTiled.pdf}}
-  \includegraphics{{Mt Adams/Scene_2D_maps/AllMapsTiled.pdf}}
-  \includegraphics{{Mt McLoughlin/Scene_2D_maps/AllMapsTiled.pdf}}
-  \includegraphics{{Mt Jefferson/Scene_2D_maps/AllMapsTiled.pdf}}
+% Mt Hood
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Mt Hood/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+% Mt Rainier
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Mt Rainier/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+% Mt St Helens
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Mt St Helens/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+% Mt Adams
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Mt Adams/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+% Mt McLoughlin
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Mt McLoughlin/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+% Mt Jefferson
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Mt Jefferson/Scene_2D_maps/AllMapsTiled.pdf}}
 \end{figure}
 
 \end{document}
