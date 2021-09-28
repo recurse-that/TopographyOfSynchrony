@@ -5,7 +5,6 @@
 	<gx:CascadingStyle kml:id="__managed_style_574B5D15DD1D5EB481A6">
 		<Style>
 			<IconStyle>
-				<scale>1.2</scale>
 				<Icon>
 					<href>https://earth.google.com/earth/rpc/cc/icon?color=fbc02d&amp;id=2000&amp;scale=4</href>
 				</Icon>
@@ -15,7 +14,7 @@
 			</LabelStyle>
 			<LineStyle>
 				<color>ff2dc0fb</color>
-				<width>6</width>
+				<width>2</width>
 			</LineStyle>
 			<PolyStyle>
 				<color>40ffffff</color>
@@ -98,7 +97,7 @@
 				<color>40ffffff</color>
 			</PolyStyle>
 			<BalloonStyle>
-				<displayMode>hide</displayMode>
+				<gx:displayMode>card</gx:displayMode>
 			</BalloonStyle>
 		</Style>
 	</gx:CascadingStyle>
@@ -112,7 +111,7 @@
 			<styleUrl>#__managed_style_2DD1DB2CED1D5EB481A6</styleUrl>
 		</Pair>
 	</StyleMap>
-	<Placemark id="04679B633D1638A365AC">
+	<Placemark id="081BD8D5E41CD2E511D0">
 		<name>Black Canyon of the Gunnison</name>
 		<gx:mid>/m/01wkjw</gx:mid>
 		<gx:fid>0x873f5efc49376af1:0x3f31d692b3ad8bbc</gx:fid>
@@ -297,19 +296,19 @@
 		<gx:mid>/m/094xz</gx:mid>
 		<gx:fid>0x54969956568a2691:0x69ddb4f4b6cf94c7</gx:fid>
 		<LookAt>
-			<longitude>-122.1955508</longitude>
-			<latitude>46.19140005000001</latitude>
+			<longitude>-81.9198755</longitude>
+			<latitude>38.44580785</latitude>
 			<altitude>0</altitude>
 			<heading>0</heading>
 			<tilt>0</tilt>
 			<gx:fovy>35</gx:fovy>
-			<range>3546.010675594906</range>
+			<range>18206.98195523558</range>
 			<altitudeMode>relativeToGround</altitudeMode>
 		</LookAt>
 		<styleUrl>#__managed_style_3E212F58D61D5EB481A6</styleUrl>
 		<Point>
 			<altitudeMode>relativeToGround</altitudeMode>
-			<coordinates>-122.1955508,46.19140059999999,0</coordinates>
+			<coordinates>-81.9293007,38.4500905,0</coordinates>
 		</Point>
 	</Placemark>
 	<Placemark id="0F4ACEC6C8198184F56A">

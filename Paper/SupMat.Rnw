@@ -16,7 +16,7 @@
 \usepackage{authblk}
 
 \graphicspath{{../Results}}
-\def \kawFigPath 
+\def \kawFigPath
 
 %external documents
 \externaldocument[MT-]{Paper}
