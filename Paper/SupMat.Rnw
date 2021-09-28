@@ -44,7 +44,11 @@
 \maketitle
 
 %probably want table of contents, figure and table lists
+\section*{Table Of Contents} \\
+\section*{Figures}
+\begin{figure}
 
+\end{figure}
 Place text here
 
 \end{document}
