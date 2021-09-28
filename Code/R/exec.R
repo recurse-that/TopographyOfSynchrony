@@ -157,6 +157,9 @@ knit(Sweave2knitr("Paper/SupMat.Rnw"))
 tinytex::latexmk("Paper/SupMat.tex")
 
 
+write.csv(pearson_results, save_path)
+write.csv(spearman_results, save_path)
+
 # Add results path to 
 #TODO: Create and save pretty tables for each of the scenes
 
@@ -168,6 +171,4 @@ tinytex::latexmk("Paper/SupMat.tex")
 
 
 
-write.csv(pearson_results, save_path)
-write.csv(spearman_results, save_path)
 
