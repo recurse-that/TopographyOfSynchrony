@@ -67,7 +67,7 @@ for ( i in 1:scene_count ) {
   df_in <- read.csv(file_names_in[i])
   names(df_in) <- c("X_coord", "Y_coord", "Elevation", "Elevation_SD", "Avg_MXVI", "MXVI_SD", "Pearson", "Spearman")
   
-  # initialize current scene inputn m 
+  # initialize current scene input
   coords = df_in[,c(1,2)]
   elev = df_in[,3]
   esd = df_in[,4]
