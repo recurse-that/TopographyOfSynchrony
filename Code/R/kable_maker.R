@@ -47,16 +47,15 @@ kable_maker <- function(scene_index, scene_names,
     add_header_above(c(" " = 1, "Pearson" = 2, "Spearman" = 2)) %>%
     column_spec(1, color = "black", background="#bfbfbf") %>%
     column_spec(2, color = ifelse(P_p_vals[1:4] < 0.05, "white", "black"),
-                background = ifelse(P_p_vals[1:4] < 0.05, "blue", "white")) %>%
+                background = ifelse(P_p_vals[1:4] < 0.05, "green", "white")) %>%
     column_spec(3, color = ifelse(P_p_vals < 0.05, "white", "black"),
                 background = ifelse(P_p_vals < 0.05, ifelse(P_corr_vals<0, "red", "blue"), "white")) %>%
     column_spec(4, color = ifelse(S_p_vals[1:4] < 0.05, "white", "black"),
-                background = ifelse(S_p_vals[1:4] < 0.05, "blue", "white")) %>%
+                background = ifelse(S_p_vals[1:4] < 0.05, "green", "white")) %>%
     column_spec(5, color = ifelse(S_p_vals < 0.05, "white", "black"), 
                   background = ifelse(S_p_vals < 0.05, ifelse(S_corr_vals<0, "red", "blue"), "white")) %>%
     save_kable(file = table_png, zoom=1.5)
   
-  library(webshot)
   webshot(table_png)
 }  # end function 
 

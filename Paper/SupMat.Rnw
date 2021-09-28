@@ -1,5 +1,4 @@
 \documentclass[letterpaper,11pt]{article}
-
 %packages
 \usepackage{amsfonts}
 \usepackage{graphicx}
@@ -16,8 +15,8 @@
 \usepackage{xr}
 \usepackage{authblk}
 
-%new commands and so on
-
+\graphicspath{{../Results}}
+\def \kawFigPath
 
 %external documents
 \externaldocument[MT-]{Paper}
@@ -35,6 +34,7 @@
 \author{Max Castorani}
 
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 
 %The following is where you load in the numeric results that will be embedded in the text
 <<eval=T,echo=F,message=F,warning=F>>=
@@ -44,11 +44,108 @@
 \maketitle
 
 %probably want table of contents, figure and table lists
-\section*{Table Of Contents} \\
+\section*{Table Of Contents}
+\newpage
 \section*{Figures}
-\begin{figure}
-
+% Canyon Scene Synchrony Tables
+\begin{figure}[htbp]
+  \centering
+  \textbf{Canyon Scenes} \\
+  \vspace{5mm}
+  \setkeys{Gin}{width=0.5\linewidth}
+  \includegraphics{{Black Canyon of the Gunnison/tbl}}\,%
+  \includegraphics{{Gunnison Point/tbl}}
+  \includegraphics{{Marble Canyon/tbl}}\,%
 \end{figure}
-Place text here
+% Valley Scene Synchrony Tables
+\begin{figure}[htbp]
+  \centering
+  \textbf{Valley Scenes} \\
+  \vspace{5mm}
+  \setkeys{Gin}{width=0.5\linewidth}
+  \includegraphics{{Teays Valley/tbl}}\,%
+  \includegraphics{{Oljato Monument Valley/tbl}}
+\end{figure}
+% Mesa and Plateau Scene Synchrony Tables
+\begin{figure}[htbp]
+  \centering
+  \textbf{Mesa and Plateau Scenes} \\
+  \vspace{5mm}
+  \setkeys{Gin}{width=0.5\linewidth}
+  \includegraphics{{Sentinel Mesa/tbl}}\,%
+  \includegraphics{{Grand Mesa/tbl}}
+\end{figure}
+% Mountain Scene SynchronyTables
+\begin{figure}[htbp]
+  \centering
+  \textbf{Mountain Scenes} \\
+  \vspace{2mm}
+  \setkeys{Gin}{width=0.5\linewidth}
+  \includegraphics{{Mt Hood/tbl}}\,%
+  \includegraphics{{Mt Rainier/tbl}}
+  \includegraphics{{Mt St Helens/tbl}}\,%
+  \includegraphics{{Mt Adams/tbl}}
+  \includegraphics{{Mt McLoughlin/tbl}}\,%
+  \includegraphics{{Mt Jefferson/tbl}}
+\end{figure}
+
+% Tiled Maps
+% Canyon Scenes
+% Black Canyon of the Gunnison
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Black Canyon of the Gunnison/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+% Gunnison Point
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Gunnison Point/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+% Marble Canyon
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Marble Canyon/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+% Valley Scenes
+% Teays Valley
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Teays Valley/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+% Oljato Monument Valley
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Oljato Monument Valley/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+% Mesa and Plateau Scenes
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Sentinel Mesa/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+% Grand Mesa
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Grand Mesa/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+
+% Mountain Scenes
+% Mt Hood
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Mt Hood/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+% Mt Rainier
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Mt Rainier/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+% Mt St Helens
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Mt St Helens/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+% Mt Adams
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Mt Adams/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+% Mt McLoughlin
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Mt McLoughlin/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
+% Mt Jefferson
+\begin{figure}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{Mt Jefferson/Scene_2D_maps/AllMapsTiled.pdf}}
+\end{figure}
 
 \end{document}

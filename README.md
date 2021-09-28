@@ -21,7 +21,7 @@ R scripts perform modified ttests that account for spatial auto correlation.
 - After running your Matlab code run exec.R in <userpath>/TopographyOfSynchrony/Code/R
 - It produces scatter plots, statistical results, and presentation quality synchrony tables for each scene
 ### PAPER
-- Compiling Paper.Rmd and supmat.Rmd will generate the paper 
+- Compiling Paper.Rmd and supmat.Rmd will generate the paper
 
 ## Try your own scenes
 - Confirm dependencies[#Dependencies] below are met

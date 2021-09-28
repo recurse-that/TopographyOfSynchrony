@@ -4,6 +4,7 @@
       cur_path  % path to base directory
       code_path % path to code folder
       data_path % path to data folder
+      results_path % path to the results folder
       workspace_vars_path  % path to folder where variables created during 
                            % runtime are stored
       scene_count
@@ -17,12 +18,13 @@
     end  % properties
     
     methods
-      function read = READ(path, path_to_code, path_to_data)
+      function read = READ(path, path_to_code, path_to_data, path_to_results)
         %READ reads in user data and modis data
         % Initializes an object of type data usin  
         read.cur_path = path;
         read.code_path = path_to_code;
         read.data_path = path_to_data;
+        read.results_path = path_to_results;
         read.workspace_vars_path = append(path_to_code, "workspaceVariables");
         
         % confirm we're in the correct directory
@@ -158,7 +160,7 @@
                           modis_qkm_pixel_lon, water1_land0_v2);
         % set the paths for the data
         setPaths(read.allData, read.cur_path,...
-                 read.code_path, read.data_path);
+                 read.code_path, read.data_path, read.results_path);
         % initialize the scenes held by the data object
         initScenes(read.allData, read.scene_names, scene_dims,...
                    scene_latlons, read.rad);
