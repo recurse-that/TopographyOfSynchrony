@@ -153,7 +153,10 @@ source(paste(code_path, "scatter_plotter.R", sep="/"))
 library(knitr)
 setwd(cur_wd)
 
-knit(Sweave2knitr("Paper/SupMat.Rnw"))
+Sweave2knitr("Paper/SupMat.Rnw")
+
+knit("Paper/SupMat-knitr.Rnw", output = "Paper/SupMat.tex")
+
 tinytex::latexmk("Paper/SupMat.tex")
 
 

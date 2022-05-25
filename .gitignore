@@ -1,0 +1,12 @@
+
+*.mat
+*.txt
+*.tex
+*.aux
+*.log
+Paper/SupMat-knitr-knitr.Rnw
+*.pdf
+Paper/SupMat-knitr.Rnw
+*.jpg
+*.fig
+*.png

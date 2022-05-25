@@ -15,14 +15,14 @@
 \usepackage{xr}
 \usepackage{authblk}
 
-\graphicspath{{../Results}}
+\graphicspath{{./Results}}
 \def \kawFigPath
 
 %external documents
 \externaldocument[MT-]{Paper}
 
 %header material for paper
-\title{Drivers of spatial synchrony in giant kelp populations}
+\title{Topography and geography of synchrony}
 \date{}
 
 %***Tentative author order
@@ -51,9 +51,9 @@
 \begin{figure}[htbp]
   \centering
   \textbf{Canyon Scenes} \\
-  \vspace{5mm}
-  \setkeys{Gin}{width=0.5\linewidth}
-  \includegraphics{{Black Canyon of the Gunnison/tbl}}\,%
+  \vspace{10mm}
+  \setkeys{Gin}{width=.45\linewidth}
+  \includegraphics{{Black Canyon of the Gunnison/tbl.png}}\,%
   \includegraphics{{Gunnison Point/tbl}}
   \includegraphics{{Marble Canyon/tbl}}\,%
 \end{figure}
@@ -61,8 +61,8 @@
 \begin{figure}[htbp]
   \centering
   \textbf{Valley Scenes} \\
-  \vspace{5mm}
-  \setkeys{Gin}{width=0.5\linewidth}
+  \vspace{10mm}
+  \setkeys{Gin}{width=0.45\linewidth}
   \includegraphics{{Teays Valley/tbl}}\,%
   \includegraphics{{Oljato Monument Valley/tbl}}
 \end{figure}
@@ -70,8 +70,8 @@
 \begin{figure}[htbp]
   \centering
   \textbf{Mesa and Plateau Scenes} \\
-  \vspace{5mm}
-  \setkeys{Gin}{width=0.5\linewidth}
+  \vspace{10mm}
+  \setkeys{Gin}{width=0.45\linewidth}
   \includegraphics{{Sentinel Mesa/tbl}}\,%
   \includegraphics{{Grand Mesa/tbl}}
 \end{figure}
@@ -79,8 +79,8 @@
 \begin{figure}[htbp]
   \centering
   \textbf{Mountain Scenes} \\
-  \vspace{2mm}
-  \setkeys{Gin}{width=0.5\linewidth}
+  \vspace{10mm}
+  \setkeys{Gin}{width=0.45\linewidth}
   \includegraphics{{Mt Hood/tbl}}\,%
   \includegraphics{{Mt Rainier/tbl}}
   \includegraphics{{Mt St Helens/tbl}}\,%
